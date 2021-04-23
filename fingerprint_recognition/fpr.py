@@ -3,6 +3,7 @@ import os
 import sys
 import numpy
 import matplotlib.pyplot as plt
+import enhance
 from enhance import image_enhance
 from skimage.morphology import skeletonize, thin
 
@@ -66,7 +67,7 @@ def get_descriptors(img):
     orb = cv2.ORB_create()
     # Compute descriptors
     _, des = orb.compute(img, keypoints)
-    return (keypoints, des);
+    return (keypoints, des)
 
 
 def main(candidate_id):
@@ -94,7 +95,7 @@ def main(candidate_id):
     plt.show()
 
     # Calculate score
-    score = 0;
+    score = 0
     for match in matches:
         score += match.distance
     score_threshold = 33
