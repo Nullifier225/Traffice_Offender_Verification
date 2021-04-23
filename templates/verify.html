@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .previous {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
+        .round {
+            border-radius: 50%;
+        }
+    </style>
+
+    <title>Verify</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+    function showDiv() {
+        document.getElementById('history').style.display = "block";
+    }
+</script>
+
+<body align=center>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <legend>
+                <h1>Traffic Offenders Verification</h1>
+            </legend>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-offset-3 text-left"><a href="/" class="previous round">&#8249;</a></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <div class="text-left">
+            <label>ID number: </label>
+            <input type = "text" id = "identity" required />
+        </div>
+        <br>
+        <div class="text-left">
+            <label>Fingerprint: </label>
+            <input type="file" id="Fingerprint" accept="image/*" />
+            </div>
+            <br>
+            <div class="text-left">
+            <label>Signature: </label>
+            <input type="file" id="Signature" accept="image/*" />
+        </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <a href="#"><input type="submit" class="btn btn-primary" value="verify"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
