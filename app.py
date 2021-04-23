@@ -69,16 +69,16 @@ def upload_enroll():
     target1 = os.path.join(APP_ROOT,'F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered')
     # target2 = os.path.join(APP_ROOT,'Enter the signature register address')
     fp = request.files["fingerprint"]
-    signature = request.files["signature"]
+    # signature = request.files["signature"]
     filename = request.form['identity']
     ext1 = fp.filename[-4:]
-    ext2 = signature.filename[-4:]
+    # ext2 = signature.filename[-4:]
     destination1 = "/".join([target1,filename+ext1])
-    destination2 = "/".join([target2,filename+ext2])
-    print(destination1)
-    print(destination2)
+    # destination2 = "/".join([target2,filename+ext2])
+    # print(destination1)
+    # print(destination2)
     fp.save(destination1)
-    signature.save(destination1)
+    # signature.save(destination1)
 
     return redirect('/')
 

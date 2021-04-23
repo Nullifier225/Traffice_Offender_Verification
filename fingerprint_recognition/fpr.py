@@ -71,11 +71,11 @@ def get_descriptors(img):
 
 def main(candidate_id):
 
-    img1 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered/"candidate_id"jpg", cv2.IMREAD_GRAYSCALE)
+    img1 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered/"+str(candidate_id)+".jpg", cv2.IMREAD_GRAYSCALE)
     kp1, des1 = get_descriptors(img1)
 
 
-    img2 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/sample/"+candidate_id+"jpg", cv2.IMREAD_GRAYSCALE)
+    img2 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/sample/"+str(candidate_id)+".jpg", cv2.IMREAD_GRAYSCALE)
     kp2, des2 = get_descriptors(img2)
 
     # Matching between descriptors
@@ -87,11 +87,11 @@ def main(candidate_id):
     f, axarr = plt.subplots(1,2)
     axarr[0].imshow(img4)
     axarr[1].imshow(img5)
-    plt.show()
+    # plt.show()
     # Plot matches
     img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches, flags=2, outImg=None)
-    plt.imshow(img3)
-    plt.show()
+    # plt.imshow(img3)
+    # plt.show()
 
     # Calculate score
     score = 0
@@ -103,8 +103,10 @@ def main(candidate_id):
     print(score/len(matches))
     if score/len(matches) < score_threshold:
         print("Fingerprint matches.")
+        return "Fingerprint matches"
     else:
         print("Fingerprint does not match.")
+        return "Fingerprint does not match"
 
 
 

@@ -7,7 +7,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url("https://media.giphy.com/media/xT8qB8gHSnZ7U8Cr8k/source.gif");
+            background-color: #cccccc;
+        }
+
+        .description {
+            background-color: #cccccc;
+        }
+    </style>
 </head>
+
 <script>
     function showDiv() {
         document.getElementById('history').style.display = "block";
@@ -15,39 +26,44 @@
 </script>
 
 <body align=center>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <legend>
-                <h1>Traffic Offenders Verification</h1>
-            </legend>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-
-    <br>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-
-            This project brings together a behavioural and physical biometric. It helps a traffic police personel to verify the identity of the offender they have haulted.
-
+    <div class="description col-md-offset-3 col-md-6">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <legend>
+                    <h1>Traffic Offenders Verification</h1>
+                </legend>
+            </div>
+            <div class="col-md-4"></div>
         </div>
 
-        <div class="form-group">
-            <div>
-                <div></div>
-                <br/>
-                <br/>
-                <br/>
-                <div class="left">
-                    <label>Verify the offender?</label>
-                    <a href="verify"><input type="submit" class="btn btn-default" value="Verify"></a>
-                </div>
-                <br/>
-                <div class="right">
-                    <label>New here? try enrolling</label>
-                    <a href="enroll"><input type="submit" class="btn btn-default" value="Enroll"></a>
+        <br>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+
+                This project brings together a behavioral and physical biometric. It helps a traffic police personnel to
+                verify the identity of the offender they have haulted.
+
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <div></div>
+                    <br />
+                    <br />
+                    <br />
+                    <div class=" text-center">
+                        <br>
+                        <label>Verify the offender?</label>
+                        <a href="verify"><input type="submit" class="btn btn-primary" value="Verify"></a>
+                    </div>
+                    <br />
+                    <div class=" text-center">
+                        <label>New here? try enrolling</label>
+                        <a href="enroll"><input type="submit" class="btn btn-success" value="Enroll"></a>
+                    </div>
                 </div>
             </div>
         </div>
