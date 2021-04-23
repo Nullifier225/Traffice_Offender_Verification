@@ -18,8 +18,20 @@ def register():
     return render_template('enroll.html')
 
 @app.route('/enroll' , methods=[ 'GET','POST'])
-def upload():
+def upload_enroll():
     target = os.path.join(APP_ROOT,'/Users/SOWMIHARI/Documents/GitHub/Traffice_Offender_Verification/fingerprint-recognition/registered')
+    file = request.files["fingerprint"]
+    filename = request.form['identity']
+    ext = file.filename[-4:]
+    destination = "/".join([target,filename+ext])
+    print(destination)
+    file.save(destination)
+    
+    return redirect('/')
+
+@app.route('/verify' , methods=[ 'GET','POST'])
+def uploa_verify():
+    target = os.path.join(APP_ROOT,'/Users/SOWMIHARI/Documents/GitHub/Traffice_Offender_Verification/fingerprint-recognition/sample')
     file = request.files["fingerprint"]
     filename = request.form['identity']
     ext = file.filename[-4:]
