@@ -3,7 +3,6 @@ import os
 import sys
 import numpy
 import matplotlib.pyplot as plt
-import enhance
 from enhance import image_enhance
 from skimage.morphology import skeletonize, thin
 
@@ -71,12 +70,12 @@ def get_descriptors(img):
 
 
 def main(candidate_id):
-    image_name = sys.argv[1]
-    img1 = cv2.imread("registered/"+str(candidate_id)+'.jpg', cv2.IMREAD_GRAYSCALE)
+
+    img1 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered/"candidate_id"jpg", cv2.IMREAD_GRAYSCALE)
     kp1, des1 = get_descriptors(img1)
 
-    image_name = sys.argv[2]
-    img2 = cv2.imread("sample/"+str(candidate_id)+'.jpg', cv2.IMREAD_GRAYSCALE)
+
+    img2 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/sample/"+candidate_id+"jpg", cv2.IMREAD_GRAYSCALE)
     kp2, des2 = get_descriptors(img2)
 
     # Matching between descriptors
@@ -99,7 +98,18 @@ def main(candidate_id):
     for match in matches:
         score += match.distance
     score_threshold = 33
+    print(score)
+    print(len(matches))
+    print(score/len(matches))
     if score/len(matches) < score_threshold:
         print("Fingerprint matches.")
     else:
         print("Fingerprint does not match.")
+
+
+
+if __name__ == "__main__":
+    try:
+        main(101)
+    except:
+        raise
