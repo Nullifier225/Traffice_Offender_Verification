@@ -102,11 +102,3 @@ def main(candidate_id):
         print("Fingerprint matches.")
     else:
         print("Fingerprint does not match.")
-
-
-
-if __name__ == "__main__":
-    try:
-        main(101)
-    except:
-        raise
