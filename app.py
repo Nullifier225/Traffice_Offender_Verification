@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,redirect
 from flask.helpers import find_package, url_for
 import os
 import cv2
+from pathlib import Path
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
@@ -77,6 +78,8 @@ def upload_enroll():
     destination2 = "/".join([target2,filename+ext2])
     # print(destination1)
     # print(destination2)
+    if os.path.isfile(destination1):
+        return render_template('enroll.html',result ="ID already exists")
     fp.save(destination1)
     signature.save(destination2)
 
