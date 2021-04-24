@@ -71,11 +71,18 @@ def get_descriptors(img):
 
 def main(candidate_id):
 
-    img1 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered/"+str(candidate_id)+".jpg", cv2.IMREAD_GRAYSCALE)
+    target1 = "F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered/"+str(candidate_id)+".jpg"
+    target2 = "F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/sample/"+str(candidate_id)+".jpg"
+
+    if(not os.path.exists(target1)):
+        return "Invalid ID. Can't find fingerprint. Please Register"
+    img1 = cv2.imread(target1, cv2.IMREAD_GRAYSCALE)
     kp1, des1 = get_descriptors(img1)
 
 
-    img2 = cv2.imread("F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/sample/"+str(candidate_id)+".jpg", cv2.IMREAD_GRAYSCALE)
+    if(not os.path.exists(target2)):
+        return "Fingerprint image not properly uploaded"
+    img2 = cv2.imread(target2, cv2.IMREAD_GRAYSCALE)
     kp2, des2 = get_descriptors(img2)
 
     # Matching between descriptors
@@ -102,8 +109,8 @@ def main(candidate_id):
     print(len(matches))
     print(score/len(matches))
     if score/len(matches) < score_threshold:
-        print("Fingerprint matches.")
-        return "Fingerprint matches"
+        print("Fingerprint matches with score = {:.2f}".format(100-(score / len(matches))))
+        return "Fingerprint matches with score = {:.2f}".format(100-(score / len(matches)))
     else:
         print("Fingerprint does not match.")
         return "Fingerprint does not match"

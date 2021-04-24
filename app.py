@@ -67,40 +67,45 @@ def register():
 @app.route('/enroll' , methods=[ 'GET','POST'])
 def upload_enroll():
     target1 = os.path.join(APP_ROOT,'F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/registered')
-    # target2 = os.path.join(APP_ROOT,'Enter the signature register address')
+    target2 = os.path.join(APP_ROOT,'F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/signature_recognition/registered')
     fp = request.files["fingerprint"]
-    # signature = request.files["signature"]
+    signature = request.files["signature"]
     filename = request.form['identity']
     ext1 = fp.filename[-4:]
-    # ext2 = signature.filename[-4:]
+    ext2 = signature.filename[-4:]
     destination1 = "/".join([target1,filename+ext1])
-    # destination2 = "/".join([target2,filename+ext2])
+    destination2 = "/".join([target2,filename+ext2])
     # print(destination1)
     # print(destination2)
     fp.save(destination1)
-    # signature.save(destination1)
+    signature.save(destination2)
 
     return redirect('/')
 
 @app.route('/verify' , methods=[ 'GET','POST'])
 def upload_verify():
     target1 = os.path.join(APP_ROOT,'F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/fingerprint_recognition/sample')
-    # target2 = os.path.join(APP_ROOT,'Enter the signature sample address')
+    target2 = os.path.join(APP_ROOT,'F:/College/SemVI/Biometrics/Project/Traffice_Offender_Verification/signature_recognition/sample')
     fp = request.files["fingerprint"]
-    # signature = request.files["signature"]
+    signature = request.files["signature"]
     filename = request.form['identity']
     ext1 = fp.filename[-4:]
-    # ext2 = signature.filename[-4:]
+    ext2 = signature.filename[-4:]
     destination1 = "/".join([target1,filename+ext1])
-    # destination2 = "/".join([target2,filename+ext2])
-    print(destination1)
+    destination2 = "/".join([target2,filename+ext2])
+    # print(destination1)
     # print(destination2)
     fp.save(destination1)
-    # signature.save(destination1)
+    signature.save(destination2)
 
     from fingerprint_recognition import fpr
+    from signature_recognition import sr
 
-    return render_template('verify.html',result1 = fpr.main(filename))#,result2 = the code of signature)
+    return render_template('verify.html',result1 = fpr.main(filename),result2 = sr.main(filename))
+    # if os.path.exists(destination1):
+    #     os.remove(destination1)
+    # if os.path.exists(destination2):
+    #     os.remove(destination2)
 
 
 if __name__ == '__main__':
