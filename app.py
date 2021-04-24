@@ -101,11 +101,17 @@ def upload_verify():
     from fingerprint_recognition import fpr
     from signature_recognition import sr
 
-    return render_template('verify.html',result1 = fpr.main(filename),result2 = sr.main(filename))
-    # if os.path.exists(destination1):
-    #     os.remove(destination1)
-    # if os.path.exists(destination2):
-    #     os.remove(destination2)
+    res1 = fpr.main(filename)
+    res2 = sr.main(filename)
+
+    if os.path.exists(destination1):
+        os.path.exists(destination1)
+        os.remove(destination1)
+    if os.path.exists(destination2):
+        os.path.exists(destination2)
+        os.remove(destination2)
+
+    return render_template('verify.html',result1 = res1,result2 = res2)
 
 
 if __name__ == '__main__':
