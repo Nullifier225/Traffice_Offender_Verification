@@ -23,6 +23,8 @@ def removedot(invertThin):
         for j in range(H - filtersize):
             filter0 = temp1[i:i + filtersize,j:j + filtersize]
 
+
+
             flag = 0
             if sum(filter0[:,0]) == 0:
                 flag +=1
